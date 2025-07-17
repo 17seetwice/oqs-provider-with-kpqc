@@ -1,7 +1,7 @@
 if(NOT BUILD_TESTING)
   return()
 endif()
-
+find_package(Threads REQUIRED)
 include(GNUInstallDirs)
 if (CMAKE_GENERATOR MATCHES "Visual Studio")
 set(OQS_PROV_BINARY_DIR ${CMAKE_BINARY_DIR}/lib/${CMAKE_BUILD_TYPE})
@@ -101,6 +101,15 @@ set_tests_properties(oqs_groups
 endif()
 add_executable(oqs_test_groups oqs_test_groups.c test_common.c tlstest_helpers.c)
 target_link_libraries(oqs_test_groups PRIVATE ${OPENSSL_SSL_LIBRARY} ${OPENSSL_CRYPTO_LIBRARY} ${OQS_ADDL_SOCKET_LIBS} ${REQ_LIBS_T})
+target_link_libraries(oqs_test_groups
+    PRIVATE
+      ${OPENSSL_SSL_LIBRARY}
+      ${OPENSSL_CRYPTO_LIBRARY}
+      Threads::Threads
+      ${CMAKE_DL_LIBS}
+      ${OQS_ADDL_SOCKET_LIBS}
+      ${REQ_LIBS_T}
+)
 
 add_test(
     NAME oqs_tlssig
