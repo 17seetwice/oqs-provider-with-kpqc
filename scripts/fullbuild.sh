@@ -83,7 +83,8 @@ if [ -z $liboqs_DIR ]; then
   echo "need to re-build static liboqs..."
   if [ ! -d liboqs ]; then
     echo "cloning liboqs $LIBOQS_BRANCH..."
-    git clone --depth 1 --branch $LIBOQS_BRANCH https://github.com/open-quantum-safe/liboqs.git
+    git clone --depth 1 --branch $LIBOQS_BRANCH https://github.com/17seetwice/liboqs-with-haetae.git
+    mv liboqs-with-haetae liboqs
     if [ $? -ne 0 ]; then
       echo "liboqs clone failure for branch $LIBOQS_BRANCH. Exiting."
       exit -1
