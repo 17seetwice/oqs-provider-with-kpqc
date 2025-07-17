@@ -779,4 +779,13 @@ MAKE_DECODER(, "snova2965", snova2965, oqsx, PrivateKeyInfo);
 MAKE_DECODER(, "snova2965", snova2965, oqsx, SubjectPublicKeyInfo);
 MAKE_DECODER(, "p521_snova2965", p521_snova2965, oqsx, PrivateKeyInfo);
 MAKE_DECODER(, "p521_snova2965", p521_snova2965, oqsx, SubjectPublicKeyInfo);
+
+MAKE_DECODER(, "haetae2", haetae2, oqsx, PrivateKeyInfo);
+MAKE_DECODER(, "haetae2", haetae2, oqsx, SubjectPublicKeyInfo);
+
+MAKE_DECODER(, "haetae3", haetae3, oqsx, PrivateKeyInfo);
+MAKE_DECODER(, "haetae3", haetae3, oqsx, SubjectPublicKeyInfo);
+
+MAKE_DECODER(, "haetae5", haetae5, oqsx, PrivateKeyInfo);
+MAKE_DECODER(, "haetae5", haetae5, oqsx, SubjectPublicKeyInfo);
 ///// OQS_TEMPLATE_FRAGMENT_DECODER_MAKE_END

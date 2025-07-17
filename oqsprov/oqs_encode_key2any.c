@@ -882,6 +882,19 @@ static int oqsx_pki_priv_to_der(const void *vxkey, unsigned char **pder) {
 #define p521_snova2965_evp_type 0
 #define p521_snova2965_input_type "p521_snova2965"
 #define p521_snova2965_pem_type "p521_snova2965"
+
+#define haetae2_evp_type 0
+#define haetae2_input_type "haetae2"
+#define haetae2_pem_type "haetae2"
+
+#define haetae3_evp_type 0
+#define haetae3_input_type "haetae3"
+#define haetae3_pem_type "haetae3"
+
+#define haetae5_evp_type 0
+#define haetae5_input_type "haetae5"
+#define haetae5_pem_type "haetae5"
+
 ///// OQS_TEMPLATE_FRAGMENT_ENCODER_DEFINES_END
 
 /* ---------------------------------------------------------------------- */
@@ -2102,4 +2115,29 @@ MAKE_ENCODER(, p521_snova2965, oqsx, PrivateKeyInfo, pem);
 MAKE_ENCODER(, p521_snova2965, oqsx, SubjectPublicKeyInfo, der);
 MAKE_ENCODER(, p521_snova2965, oqsx, SubjectPublicKeyInfo, pem);
 MAKE_TEXT_ENCODER(, p521_snova2965);
+
+MAKE_ENCODER(, haetae2, oqsx, EncryptedPrivateKeyInfo, der);
+MAKE_ENCODER(, haetae2, oqsx, EncryptedPrivateKeyInfo, pem);
+MAKE_ENCODER(, haetae2, oqsx, PrivateKeyInfo, der);
+MAKE_ENCODER(, haetae2, oqsx, PrivateKeyInfo, pem);
+MAKE_ENCODER(, haetae2, oqsx, SubjectPublicKeyInfo, der);
+MAKE_ENCODER(, haetae2, oqsx, SubjectPublicKeyInfo, pem);
+MAKE_TEXT_ENCODER(, haetae2);
+
+MAKE_ENCODER(, haetae3, oqsx, EncryptedPrivateKeyInfo, der);
+MAKE_ENCODER(, haetae3, oqsx, EncryptedPrivateKeyInfo, pem);
+MAKE_ENCODER(, haetae3, oqsx, PrivateKeyInfo, der);
+MAKE_ENCODER(, haetae3, oqsx, PrivateKeyInfo, pem);
+MAKE_ENCODER(, haetae3, oqsx, SubjectPublicKeyInfo, der);
+MAKE_ENCODER(, haetae3, oqsx, SubjectPublicKeyInfo, pem);
+MAKE_TEXT_ENCODER(, haetae3);
+
+MAKE_ENCODER(, haetae5, oqsx, EncryptedPrivateKeyInfo, der);
+MAKE_ENCODER(, haetae5, oqsx, EncryptedPrivateKeyInfo, pem);
+MAKE_ENCODER(, haetae5, oqsx, PrivateKeyInfo, der);
+MAKE_ENCODER(, haetae5, oqsx, PrivateKeyInfo, pem);
+MAKE_ENCODER(, haetae5, oqsx, SubjectPublicKeyInfo, der);
+MAKE_ENCODER(, haetae5, oqsx, SubjectPublicKeyInfo, pem);
+MAKE_TEXT_ENCODER(, haetae5);
+
 ///// OQS_TEMPLATE_FRAGMENT_ENCODER_MAKE_END

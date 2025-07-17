@@ -1814,6 +1814,62 @@ extern const OSSL_DISPATCH
     oqs_PrivateKeyInfo_der_to_p521_snova2965_decoder_functions[];
 extern const OSSL_DISPATCH
     oqs_SubjectPublicKeyInfo_der_to_p521_snova2965_decoder_functions[];
+
+
+extern const OSSL_DISPATCH
+    oqs_haetae2_to_PrivateKeyInfo_der_encoder_functions[];
+extern const OSSL_DISPATCH
+    oqs_haetae2_to_PrivateKeyInfo_pem_encoder_functions[];
+extern const OSSL_DISPATCH
+    oqs_haetae2_to_EncryptedPrivateKeyInfo_der_encoder_functions[];
+extern const OSSL_DISPATCH
+    oqs_haetae2_to_EncryptedPrivateKeyInfo_pem_encoder_functions[];
+extern const OSSL_DISPATCH
+    oqs_haetae2_to_SubjectPublicKeyInfo_der_encoder_functions[];
+extern const OSSL_DISPATCH
+    oqs_haetae2_to_SubjectPublicKeyInfo_pem_encoder_functions[];
+extern const OSSL_DISPATCH oqs_haetae2_to_text_encoder_functions[];
+extern const OSSL_DISPATCH
+    oqs_PrivateKeyInfo_der_to_haetae2_decoder_functions[];
+extern const OSSL_DISPATCH
+    oqs_SubjectPublicKeyInfo_der_to_haetae2_decoder_functions[];
+
+extern const OSSL_DISPATCH
+    oqs_haetae3_to_PrivateKeyInfo_der_encoder_functions[];
+extern const OSSL_DISPATCH
+    oqs_haetae3_to_PrivateKeyInfo_pem_encoder_functions[];
+extern const OSSL_DISPATCH
+    oqs_haetae3_to_EncryptedPrivateKeyInfo_der_encoder_functions[];
+extern const OSSL_DISPATCH
+    oqs_haetae3_to_EncryptedPrivateKeyInfo_pem_encoder_functions[];
+extern const OSSL_DISPATCH
+    oqs_haetae3_to_SubjectPublicKeyInfo_der_encoder_functions[];
+extern const OSSL_DISPATCH
+    oqs_haetae3_to_SubjectPublicKeyInfo_pem_encoder_functions[];
+extern const OSSL_DISPATCH oqs_haetae3_to_text_encoder_functions[];
+extern const OSSL_DISPATCH
+    oqs_PrivateKeyInfo_der_to_haetae3_decoder_functions[];
+extern const OSSL_DISPATCH
+    oqs_SubjectPublicKeyInfo_der_to_haetae3_decoder_functions[];
+
+extern const OSSL_DISPATCH
+    oqs_haetae5_to_PrivateKeyInfo_der_encoder_functions[];
+extern const OSSL_DISPATCH
+    oqs_haetae5_to_PrivateKeyInfo_pem_encoder_functions[];
+extern const OSSL_DISPATCH
+    oqs_haetae5_to_EncryptedPrivateKeyInfo_der_encoder_functions[];
+extern const OSSL_DISPATCH
+    oqs_haetae5_to_EncryptedPrivateKeyInfo_pem_encoder_functions[];
+extern const OSSL_DISPATCH
+    oqs_haetae5_to_SubjectPublicKeyInfo_der_encoder_functions[];
+extern const OSSL_DISPATCH
+    oqs_haetae5_to_SubjectPublicKeyInfo_pem_encoder_functions[];
+extern const OSSL_DISPATCH oqs_haetae5_to_text_encoder_functions[];
+extern const OSSL_DISPATCH
+    oqs_PrivateKeyInfo_der_to_haetae5_decoder_functions[];
+extern const OSSL_DISPATCH
+    oqs_SubjectPublicKeyInfo_der_to_haetae5_decoder_functions[];    
+
 ///// OQS_TEMPLATE_FRAGMENT_ENDECODER_FUNCTIONS_END
 
 ///// OQS_TEMPLATE_FRAGMENT_ALG_FUNCTIONS_START
@@ -1923,6 +1979,13 @@ extern const OSSL_DISPATCH oqs_ecx_x448_bikel3_keymgmt_functions[];
 extern const OSSL_DISPATCH oqs_bikel5_keymgmt_functions[];
 
 extern const OSSL_DISPATCH oqs_ecp_p521_bikel5_keymgmt_functions[];
+
+
+extern const OSSL_DISPATCH oqs_haetae2_keymgmt_functions[];
+extern const OSSL_DISPATCH oqs_haetae3_keymgmt_functions[];
+extern const OSSL_DISPATCH oqs_haetae5_keymgmt_functions[];
+
+
 ///// OQS_TEMPLATE_FRAGMENT_ALG_FUNCTIONS_END
 
 /* BIO function declarations */

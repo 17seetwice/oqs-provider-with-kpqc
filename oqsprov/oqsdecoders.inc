@@ -249,4 +249,20 @@ DECODER_w_structure("snova2965", der, PrivateKeyInfo, snova2965),
 DECODER_w_structure("snova2965", der, SubjectPublicKeyInfo, snova2965),DECODER_w_structure("p521_snova2965", der, PrivateKeyInfo, p521_snova2965),
 DECODER_w_structure("p521_snova2965", der, SubjectPublicKeyInfo, p521_snova2965),
 #endif
+
+
+#ifdef OQS_ENABLE_SIG_haetae_2
+DECODER_w_structure("haetae2", der, PrivateKeyInfo, haetae2),
+DECODER_w_structure("haetae2", der, SubjectPublicKeyInfo, haetae2),
+#endif
+
+#ifdef OQS_ENABLE_SIG_haetae_3
+DECODER_w_structure("haetae3", der, PrivateKeyInfo, haetae3),
+DECODER_w_structure("haetae3", der, SubjectPublicKeyInfo, haetae3),
+#endif
+
+#ifdef OQS_ENABLE_SIG_haetae_5
+DECODER_w_structure("haetae5", der, PrivateKeyInfo, haetae5),
+DECODER_w_structure("haetae5", der, SubjectPublicKeyInfo, haetae5),
+#endif
 ///// OQS_TEMPLATE_FRAGMENT_MAKE_END

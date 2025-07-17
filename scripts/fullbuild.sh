@@ -144,4 +144,3 @@ if [ ! -f "_build/lib/oqsprovider.$SHLIBEXT" ]; then
      exit -1
    fi
 fi
-

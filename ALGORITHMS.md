@@ -166,6 +166,9 @@ The following list of algorithms may change when loading oqsprovider (version >=
 | p521_snova60104 | 0xff4f |No| OQS_CODEPOINT_P521_SNOVA60104
 | snova2965 | 0xff51 |Yes| OQS_CODEPOINT_SNOVA2965
 | p521_snova2965 | 0xff52 |Yes| OQS_CODEPOINT_P521_SNOVA2965
+| haetae2 | 0xff3a |Yes| OQS_CODEPOINT_HAETAE2
+| haetae3 | 0xff3c |Yes| OQS_CODEPOINT_HAETAE3
+| haetae5 | 0xff3e |Yes| OQS_CODEPOINT_HAETAE5
 <!--- OQS_TEMPLATE_FRAGMENT_IDS_END -->
 
 Changing code points
@@ -312,7 +315,9 @@ discussed in https://github.com/open-quantum-safe/oqs-provider/issues/351.
 | p521_snova60104 | 1.3.9999.10.11.2 |No| OQS_OID_P521_SNOVA60104
 | snova2965 | 1.3.9999.10.12.1 |Yes| OQS_OID_SNOVA2965
 | p521_snova2965 | 1.3.9999.10.12.2 |Yes| OQS_OID_P521_SNOVA2965
-
+| haetae2 | 1.3.9999.100.1 |Yes| OQS_OID_HAETAE2
+| haetae3 | 1.3.9999.100.2 |Yes| OQS_OID_HAETAE3
+| haetae5 | 1.3.9999.100.3 |Yes| OQS_OID_HAETAE5
 If [OQS_KEM_ENCODERS](CONFIGURE.md#OQS_KEM_ENCODERS) is enabled the following list is also available:
 
 |Algorithm name |    default OID    | environment variable |

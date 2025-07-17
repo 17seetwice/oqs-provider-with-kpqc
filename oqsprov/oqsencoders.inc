@@ -784,4 +784,34 @@ ENCODER_w_structure("p521_snova2965", p521_snova2965, der, SubjectPublicKeyInfo)
 ENCODER_w_structure("p521_snova2965", p521_snova2965, pem, SubjectPublicKeyInfo),
 ENCODER_TEXT("p521_snova2965", p521_snova2965),
 #endif
+
+#ifdef OQS_ENABLE_SIG_haetae_2
+ENCODER_w_structure("haetae2", haetae2, der, PrivateKeyInfo),
+ENCODER_w_structure("haetae2", haetae2, pem, PrivateKeyInfo),
+ENCODER_w_structure("haetae2", haetae2, der, EncryptedPrivateKeyInfo),
+ENCODER_w_structure("haetae2", haetae2, pem, EncryptedPrivateKeyInfo),
+ENCODER_w_structure("haetae2", haetae2, der, SubjectPublicKeyInfo),
+ENCODER_w_structure("haetae2", haetae2, pem, SubjectPublicKeyInfo),
+ENCODER_TEXT("haetae2", haetae2),
+#endif
+
+#ifdef OQS_ENABLE_SIG_haetae_3
+ENCODER_w_structure("haetae3", haetae3, der, PrivateKeyInfo),
+ENCODER_w_structure("haetae3", haetae3, pem, PrivateKeyInfo),
+ENCODER_w_structure("haetae3", haetae3, der, EncryptedPrivateKeyInfo),
+ENCODER_w_structure("haetae3", haetae3, pem, EncryptedPrivateKeyInfo),
+ENCODER_w_structure("haetae3", haetae3, der, SubjectPublicKeyInfo),
+ENCODER_w_structure("haetae3", haetae3, pem, SubjectPublicKeyInfo),
+ENCODER_TEXT("haetae3", haetae3),
+#endif
+
+#ifdef OQS_ENABLE_SIG_haetae_5
+ENCODER_w_structure("haetae5", haetae5, der, PrivateKeyInfo),
+ENCODER_w_structure("haetae5", haetae5, pem, PrivateKeyInfo),
+ENCODER_w_structure("haetae5", haetae5, der, EncryptedPrivateKeyInfo),
+ENCODER_w_structure("haetae5", haetae5, pem, EncryptedPrivateKeyInfo),
+ENCODER_w_structure("haetae5", haetae5, der, SubjectPublicKeyInfo),
+ENCODER_w_structure("haetae5", haetae5, pem, SubjectPublicKeyInfo),
+ENCODER_TEXT("haetae5", haetae5),
+#endif
 ///// OQS_TEMPLATE_FRAGMENT_MAKE_END

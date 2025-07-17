@@ -57,7 +57,7 @@ extern OSSL_FUNC_provider_get_capabilities_fn oqs_provider_get_capabilities;
 #ifdef OQS_KEM_ENCODERS
 #define OQS_OID_CNT 180
 #else
-#define OQS_OID_CNT 110
+#define OQS_OID_CNT 110+6
 #endif
 const char *oqs_oid_alg_list[OQS_OID_CNT] = {
 
@@ -245,6 +245,12 @@ const char *oqs_oid_alg_list[OQS_OID_CNT] = {
     "snova2965",
     "1.3.9999.10.12.2",
     "p521_snova2965",
+    "1.3.9999.100.1",
+    "haetae2",
+    "1.3.9999.100.2",
+    "haetae3",
+    "1.3.9999.100.3",
+    "haetae5",
     ///// OQS_TEMPLATE_FRAGMENT_ASSIGN_SIG_OIDS_END
 };
 
@@ -452,6 +458,12 @@ int oqs_patch_oids(void) {
             oqs_oid_alg_list[106 + OQS_KEMOID_CNT] = envval;
         if ((envval = getenv("OQS_OID_P521_SNOVA2965")))
             oqs_oid_alg_list[108 + OQS_KEMOID_CNT] = envval;
+        if ((envval = getenv("OQS_OID_HAETAE2")))
+            oqs_oid_alg_list[110 + OQS_KEMOID_CNT] = envval;
+        if ((envval = getenv("OQS_OID_HAETAE3")))
+            oqs_oid_alg_list[112 + OQS_KEMOID_CNT] = envval;
+        if ((envval = getenv("OQS_OID_HAETAE5")))
+            oqs_oid_alg_list[114 + OQS_KEMOID_CNT] = envval;
     } ///// OQS_TEMPLATE_FRAGMENT_OID_PATCHING_END
     return 1;
 }
@@ -601,6 +613,15 @@ static const OSSL_ALGORITHM oqsprovider_signatures[] = {
 #ifdef OQS_ENABLE_SIG_snova_SNOVA_29_6_5
     SIGALG("snova2965", 256, oqs_signature_functions),
     SIGALG("p521_snova2965", 256, oqs_signature_functions),
+#endif
+#ifdef OQS_ENABLE_SIG_haetae_2
+    SIGALG("haetae2", 128, oqs_signature_functions),
+#endif
+#ifdef OQS_ENABLE_SIG_haetae_3
+    SIGALG("haetae3", 192, oqs_signature_functions),
+#endif
+#ifdef OQS_ENABLE_SIG_haetae_5
+    SIGALG("haetae5", 256, oqs_signature_functions),
 #endif
     ///// OQS_TEMPLATE_FRAGMENT_SIG_FUNCTIONS_END
     {NULL, NULL, NULL}};
@@ -781,6 +802,19 @@ static const OSSL_ALGORITHM oqsprovider_keymgmt[] = {
 #ifdef OQS_ENABLE_SIG_snova_SNOVA_29_6_5
     SIGALG("snova2965", 256, oqs_snova2965_keymgmt_functions),
     SIGALG("p521_snova2965", 256, oqs_p521_snova2965_keymgmt_functions),
+#endif
+
+
+#ifdef OQS_ENABLE_SIG_haetae_2
+    SIGALG("haetae2", 128, oqs_haetae2_keymgmt_functions),
+#endif
+
+#ifdef OQS_ENABLE_SIG_haetae_3
+    SIGALG("haetae3", 192, oqs_haetae3_keymgmt_functions),
+#endif
+
+#ifdef OQS_ENABLE_SIG_haetae_5
+    SIGALG("haetae5", 256, oqs_haetae5_keymgmt_functions),
 #endif
 
 #ifdef OQS_ENABLE_KEM_frodokem_640_aes
