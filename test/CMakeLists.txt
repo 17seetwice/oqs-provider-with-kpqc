@@ -36,7 +36,7 @@ if (OQS_PROVIDER_BUILD_STATIC)
 endif()
 
 add_executable(oqs_test_signatures oqs_test_signatures.c test_common.c)
-target_link_libraries(oqs_test_signatures PRIVATE ${OPENSSL_CRYPTO_LIBRARY} ${OQS_ADDL_SOCKET_LIBS} ${REQ_LIBS_T})
+target_link_libraries(oqs_test_signatures PRIVATE ${OPENSSL_CRYPTO_LIBRARY} Threads::Threads ${CMAKE_DL_LIBS} ${OQS_ADDL_SOCKET_LIBS} ${REQ_LIBS_T})
 
 add_test(
   NAME oqs_kems
