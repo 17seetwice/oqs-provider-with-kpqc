@@ -1,137 +1,146 @@
 #!/bin/bash
 
 # The following variables influence the operation of this build script:
-# -f: Soft clean, ensuring re-build of oqs-provider binary
-# -F: Hard clean, wiping oqs-provider, OpenSSL & liboqs dirs
-# EnvVars:
-#   CMAKE_PARAMS         passed through to all cmake invocations
-#   MAKE_PARAMS          passed to make/ninja (e.g., "-j")
-#   OQSPROV_CMAKE_PARAMS passed to the oqs-provider cmake run
-#   LIBOQS_BRANCH        branch of liboqs to checkout (default "main")
-#   OQS_ALGS_ENABLED     limit which PQ algs to build (e.g. "STD")
-#   OQS_LIBJADE_BUILD    ON/OFF libjade support (default OFF)
-#   OPENSSL_INSTALL      path to an existing OpenSSL3 install (skips build)
-#   OPENSSL_BRANCH       branch of OpenSSL to build if OPENSSL_INSTALL unset
-#   OSSL_CONFIG          extra flags to pass to OpenSSL’s ./config
-#   liboqs_DIR           path to an installed liboqs
-
-set -euo pipefail
+# Argument -f: Soft clean, ensuring re-build of oqs-provider binary
+# Argument -F: Hard clean, ensuring checkout and build of all dependencies
+# EnvVar CMAKE_PARAMS: passed to cmake
+# EnvVar MAKE_PARAMS: passed to invocations of make; sample value: "-j"
+# EnvVar OQSPROV_CMAKE_PARAMS: passed to invocations of oqsprovider cmake
+# EnvVar LIBOQS_BRANCH: Defines branch/release of liboqs; default value "main"
+# EnvVar OQS_ALGS_ENABLED: If set, defines OQS algs to be enabled, e.g., "STD"
+# EnvVar OPENSSL_INSTALL: If set, defines (binary) OpenSSL installation to use
+# EnvVar OPENSSL_BRANCH: Defines branch/release of openssl; if set, forces source-build of OpenSSL3
+#        Setting this to feature/dtls-1.3 enables build&test of all PQ algs using DTLS1.3 feature branch
+# EnvVar OSSL_CONFIG: If set, passes arguments to the "./config" command that precedes the "make" of the OpenSSL
+# EnvVar liboqs_DIR: If set, needs to point to a directory where liboqs has been installed to
 
 if [[ "$OSTYPE" == "darwin"* ]]; then
-   SHLIBEXT="dylib"; STATLIBEXT="dylib"
+   SHLIBEXT="dylib"
+   STATLIBEXT="dylib"
 else
-   SHLIBEXT="so";   STATLIBEXT="a"
+   SHLIBEXT="so"
+   STATLIBEXT="a"
 fi
 
 if [ $# -gt 0 ]; then
-  [[ "$1" == "-f" ]] && rm -rf _build
-  [[ "$1" == "-F" ]] && rm -rf _build openssl liboqs .local
+   if [ "$1" == "-f" ]; then
+      rm -rf _build
+   fi
+   if [ "$1" == "-F" ]; then
+      rm -rf _build openssl liboqs .local
+   fi
 fi
 
-: "${LIBOQS_BRANCH:=main}"
-: "${OQS_ALGS_ENABLED:=}"
-: "${OQS_LIBJADE_BUILD:=OFF}"
+if [ -z "$LIBOQS_BRANCH" ]; then
+   export LIBOQS_BRANCH=main
+fi
 
-DOQS_ALGS_ENABLED=${OQS_ALGS_ENABLED:+-DOQS_ALGS_ENABLED=$OQS_ALGS_ENABLED}
-DOQS_LIBJADE_BUILD=-DOQS_LIBJADE_BUILD=$OQS_LIBJADE_BUILD
+if [ -z "$OQS_ALGS_ENABLED" ]; then
+   export DOQS_ALGS_ENABLED=""
+else
+   export DOQS_ALGS_ENABLED="-DOQS_ALGS_ENABLED=$OQS_ALGS_ENABLED"
+fi
 
-# ---------------------------------------------------------------------------
-# Helper: detect a system-installed OpenSSL3 (e.g. /usr/local/ssl)
-# ---------------------------------------------------------------------------
-detect_system_ossl() {
-  local dir
-  dir=$(openssl version -d 2>/dev/null | cut -d\" -f2 || :)
-  if [[ -n "$dir" ]]; then
-    for sub in lib lib64; do
-      if [[ -f "$dir/$sub/libcrypto.so.3" ]]; then
-        echo "$dir"
-        return
+if [ -z "$OQS_LIBJADE_BUILD" ]; then
+   export DOQS_LIBJADE_BUILD="-DOQS_LIBJADE_BUILD=OFF"
+else
+   export DOQS_LIBJADE_BUILD="-DOQS_LIBJADE_BUILD=$OQS_LIBJADE_BUILD"
+fi
+
+if [ -z "$OPENSSL_INSTALL" ]; then
+ openssl version | grep "OpenSSL 3" > /dev/null 2>&1
+ #if [ \($? -ne 0 \) -o \( ! -z "$OPENSSL_BRANCH" \) ]; then
+ if [ $? -ne 0 ] || [ ! -z "$OPENSSL_BRANCH" ]; then
+   if [ -z "$OPENSSL_BRANCH" ]; then
+      export OPENSSL_BRANCH="master"
+   fi
+   # No OSSL3 installation given/found, or specific branch build requested
+   echo "OpenSSL3 to be built from source at branch $OPENSSL_BRANCH."
+
+   if [ ! -d "openssl" ]; then
+      echo "openssl not specified and doesn't reside where expected: Cloning and building..."
+      # for full debug build add: enable-trace enable-fips --debug
+      export OSSL_PREFIX=`pwd`/.local && git clone --depth 1 --branch $OPENSSL_BRANCH https://github.com/openssl/openssl.git && cd openssl && LDFLAGS="-Wl,-rpath -Wl,${OSSL_PREFIX}/lib64" ./config $OSSL_CONFIG --prefix=$OSSL_PREFIX && make $MAKE_PARAMS && make install_sw install_ssldirs && cd ..
+      if [ $? -ne 0 ]; then
+        echo "openssl build failed. Exiting."
+        exit -1
+      else
+         # some cmake versions don't look in "lib64", so aid their search with this softlink
+         cd $OSSL_PREFIX && if [ -d "lib64" ]; then ln -s lib64 lib; fi && cd ..
+         export OPENSSL_INSTALL=$OSSL_PREFIX
       fi
-    done
-  fi
-}
-
-# ---------------------------------------------------------------------------
-# Decide which OpenSSL to use
-# ---------------------------------------------------------------------------
-if [ -z "${OPENSSL_INSTALL:-}" ]; then
-  # 1) Try system OpenSSL3
-  OPENSSL_INSTALL=$(detect_system_ossl || :)
-
-  # 2) If none, or a specific branch requested, build from source
-  if [ -z "$OPENSSL_INSTALL" ] || [ -n "${OPENSSL_BRANCH:-}" ]; then
-    : "${OPENSSL_BRANCH:=master}"
-    echo "→ Building OpenSSL3 from branch $OPENSSL_BRANCH …"
-
-    if [ ! -d openssl ]; then
-      OSSL_PREFIX="$(pwd)/.local"
-      git clone --depth 1 --branch "$OPENSSL_BRANCH" \
-        https://github.com/openssl/openssl.git openssl
-
-      cd openssl
-      LDFLAGS="-Wl,-rpath -Wl,${OSSL_PREFIX}/lib64" \
-        ./config $OSSL_CONFIG --prefix="$OSSL_PREFIX"
-      make $MAKE_PARAMS
-      make install_sw install_ssldirs
-      cd ..
-
-      # some CMake versions expect a plain "lib" directory
-      cd "$OSSL_PREFIX"
-      [[ -d lib64 && ! -e lib ]] && ln -s lib64 lib
-      cd -
-    fi
-
-    OPENSSL_INSTALL=${OPENSSL_INSTALL:-$OSSL_PREFIX}
-  fi
+   else
+      if [ -d ".local" ]; then
+          export OPENSSL_INSTALL=`pwd`/.local
+      fi
+   fi
+ fi
 fi
 
-# Tell pkg-config / CMake / loader where to find this OpenSSL
-export PKG_CONFIG_PATH="$OPENSSL_INSTALL/lib64/pkgconfig:$OPENSSL_INSTALL/lib/pkgconfig:$PKG_CONFIG_PATH"
-export CMAKE_PREFIX_PATH="$OPENSSL_INSTALL:$CMAKE_PREFIX_PATH"
-export LD_LIBRARY_PATH="$OPENSSL_INSTALL/lib64:$OPENSSL_INSTALL/lib:$LD_LIBRARY_PATH"
-
-# ---------------------------------------------------------------------------
-# Build (or reuse) liboqs
-# ---------------------------------------------------------------------------
-if [ -z "${liboqs_DIR:-}" ]; then
-  if [ ! -f ".local/lib/liboqs.$STATLIBEXT" ]; then
-    echo "→ Building liboqs (branch $LIBOQS_BRANCH)…"
-
-    git clone --depth 1 --branch "$LIBOQS_BRANCH" https://github.com/open-quantum-safe/liboqs.git liboqs
-
-    if [ "$LIBOQS_BRANCH" != "main" ] && [ -f oqs-template/generate.yml-$LIBOQS_BRANCH ]; then
-      pip install -r oqs-template/requirements.txt
-      cp oqs-template/generate.yml-$LIBOQS_BRANCH oqs-template/generate.yml
-      LIBOQS_SRC_DIR="$(pwd)/liboqs" \
-        python3 oqs-template/generate.py
+# Check whether liboqs is built or has been configured:
+if [ -z $liboqs_DIR ]; then
+ if [ ! -f ".local/lib/liboqs.$STATLIBEXT" ]; then
+  echo "need to re-build static liboqs..."
+  if [ ! -d liboqs ]; then
+    echo "cloning liboqs $LIBOQS_BRANCH..."
+    git clone --depth 1 --branch $LIBOQS_BRANCH https://github.com/open-quantum-safe/liboqs.git
+    if [ $? -ne 0 ]; then
+      echo "liboqs clone failure for branch $LIBOQS_BRANCH. Exiting."
+      exit -1
     fi
-
-    cd liboqs
-    cmake -GNinja \
-      $CMAKE_PARAMS $DOQS_ALGS_ENABLED \
-      -DOPENSSL_ROOT_DIR="$OPENSSL_INSTALL" \
-      $DOQS_LIBJADE_BUILD \
-      -DCMAKE_INSTALL_PREFIX="$(pwd)/../.local" \
-      -S . -B _build
-    cd _build && ninja && ninja install
-    cd ../..
+    if [ "$LIBOQS_BRANCH" != "main" ]; then
+      # check for presence of backwards-compatibility generator file
+      if [ -f oqs-template/generate.yml-$LIBOQS_BRANCH ]; then
+        pip install -r oqs-template/requirements.txt
+        echo "generating code for $LIBOQS_BRANCH"
+        mv oqs-template/generate.yml oqs-template/generate.yml-main
+        cp oqs-template/generate.yml-$LIBOQS_BRANCH oqs-template/generate.yml
+        LIBOQS_SRC_DIR=`pwd`/liboqs python3 oqs-template/generate.py
+        if [ $? -ne 0 ]; then
+           echo "Code generation failure for $LIBOQS_BRANCH. Exiting."
+           exit -1
+        fi
+      fi
+    fi
   fi
-  export liboqs_DIR="$(pwd)/.local"
+
+  # Ensure liboqs is built against OpenSSL3, not a possibly still system-
+  # installed OpenSSL111: We otherwise have mismatching symbols at runtime
+  # (detected particularly late when building shared)
+  if [ ! -z $OPENSSL_INSTALL ]; then
+    export CMAKE_OPENSSL_LOCATION="-DOPENSSL_ROOT_DIR=$OPENSSL_INSTALL"
+  else
+    # work around for cmake 3.23.3 regression not finding OpenSSL:
+    export CMAKE_OPENSSL_LOCATION="-DOPENSSL_ROOT_DIR="
+  fi
+  # for full debug build add: -DCMAKE_BUILD_TYPE=Debug
+  # to optimize for size add -DOQS_ALGS_ENABLED= suitably to one of these values:
+  #    STD: only include NIST standardized algorithms
+  #    NIST_R4: only include algorithms in round 4 of the NIST competition
+  #    All: include all algorithms supported by liboqs (default)
+  cd liboqs && cmake -GNinja $CMAKE_PARAMS $DOQS_ALGS_ENABLED $CMAKE_OPENSSL_LOCATION $DOQS_LIBJADE_BUILD -DCMAKE_INSTALL_PREFIX=$(pwd)/../.local -S . -B _build && cd _build && ninja && ninja install && cd ../..
+  if [ $? -ne 0 ]; then
+      echo "liboqs build failed. Exiting."
+      exit -1
+  fi
+ fi
+ export liboqs_DIR=$(pwd)/.local
 fi
 
-# ---------------------------------------------------------------------------
-# Build the OQS-OpenSSL provider
-# ---------------------------------------------------------------------------
+# Check whether provider is built:
 if [ ! -f "_build/lib/oqsprovider.$SHLIBEXT" ]; then
-  echo "→ Building oqs-provider…"
-  BUILD_TYPE=""
-  cd _build 2>/dev/null || cmake $CMAKE_PARAMS \
-    -DOPENSSL_ROOT_DIR="$OPENSSL_INSTALL" \
-    -DCMAKE_BUILD_TYPE=$BUILD_TYPE \
-    $OQSPROV_CMAKE_PARAMS \
-    -S . -B _build
-
-  cmake --build _build
+   echo "oqsprovider (_build/lib/oqsprovider.$SHLIBEXT) not built: Building..."
+   # for full debug build add: -DCMAKE_BUILD_TYPE=Debug
+   #BUILD_TYPE="-DCMAKE_BUILD_TYPE=Debug"
+   BUILD_TYPE=""
+   # for omitting public key in private keys add -DNOPUBKEY_IN_PRIVKEY=ON
+   if [ -z "$OPENSSL_INSTALL" ]; then
+       cmake $CMAKE_PARAMS $CMAKE_OPENSSL_LOCATION $BUILD_TYPE $OQSPROV_CMAKE_PARAMS -S . -B _build && cmake --build _build
+   else
+       cmake $CMAKE_PARAMS -DOPENSSL_ROOT_DIR=$OPENSSL_INSTALL $BUILD_TYPE $OQSPROV_CMAKE_PARAMS -S . -B _build && cmake --build _build
+   fi
+   if [ $? -ne 0 ]; then
+     echo "provider build failed. Exiting."
+     exit -1
+   fi
 fi
-
-echo "✅ Done. provider at: $OPENSSL_INSTALL/lib64/ossl-modules/oqsprovider.so"
