@@ -632,6 +632,28 @@ MAKE_DECODER(, "bikel5", bikel5, oqsx, SubjectPublicKeyInfo);
 
 MAKE_DECODER(_ecp, "p521_bikel5", p521_bikel5, oqsx, PrivateKeyInfo);
 MAKE_DECODER(_ecp, "p521_bikel5", p521_bikel5, oqsx, SubjectPublicKeyInfo);
+
+MAKE_DECODER(, "smaug1", smaug1, oqsx, PrivateKeyInfo);
+MAKE_DECODER(, "smaug1", smaug1, oqsx, SubjectPublicKeyInfo);
+
+MAKE_DECODER(, "smaug3", smaug3, oqsx, PrivateKeyInfo);
+MAKE_DECODER(, "smaug3", smaug3, oqsx, SubjectPublicKeyInfo);
+
+MAKE_DECODER(, "smaug5", smaug5, oqsx, PrivateKeyInfo);
+MAKE_DECODER(, "smaug5", smaug5, oqsx, SubjectPublicKeyInfo);
+
+MAKE_DECODER(, "ntruplus_kem576", ntruplus_kem576, oqsx, PrivateKeyInfo);
+MAKE_DECODER(, "ntruplus_kem576", ntruplus_kem576, oqsx, SubjectPublicKeyInfo);
+
+MAKE_DECODER(, "ntruplus_kem768", ntruplus_kem768, oqsx, PrivateKeyInfo);
+MAKE_DECODER(, "ntruplus_kem768", ntruplus_kem768, oqsx, SubjectPublicKeyInfo);
+
+MAKE_DECODER(, "ntruplus_kem864", ntruplus_kem864, oqsx, PrivateKeyInfo);
+MAKE_DECODER(, "ntruplus_kem864", ntruplus_kem864, oqsx, SubjectPublicKeyInfo);
+
+MAKE_DECODER(, "ntruplus_kem1152", ntruplus_kem1152, oqsx, PrivateKeyInfo);
+MAKE_DECODER(, "ntruplus_kem1152", ntruplus_kem1152, oqsx, SubjectPublicKeyInfo);
+
 #endif /* OQS_KEM_ENCODERS */
 
 MAKE_DECODER(, "mldsa44", mldsa44, oqsx, PrivateKeyInfo);
@@ -788,4 +810,22 @@ MAKE_DECODER(, "haetae3", haetae3, oqsx, SubjectPublicKeyInfo);
 
 MAKE_DECODER(, "haetae5", haetae5, oqsx, PrivateKeyInfo);
 MAKE_DECODER(, "haetae5", haetae5, oqsx, SubjectPublicKeyInfo);
+
+MAKE_DECODER(, "aimer128f", aimer128f, oqsx, PrivateKeyInfo);
+MAKE_DECODER(, "aimer128f", aimer128f, oqsx, SubjectPublicKeyInfo);
+
+MAKE_DECODER(, "aimer128s", aimer128s, oqsx, PrivateKeyInfo);
+MAKE_DECODER(, "aimer128s", aimer128s, oqsx, SubjectPublicKeyInfo);
+
+MAKE_DECODER(, "aimer192f", aimer192f, oqsx, PrivateKeyInfo);
+MAKE_DECODER(, "aimer192f", aimer192f, oqsx, SubjectPublicKeyInfo);
+
+MAKE_DECODER(, "aimer192s", aimer192s, oqsx, PrivateKeyInfo);
+MAKE_DECODER(, "aimer192s", aimer192s, oqsx, SubjectPublicKeyInfo);
+
+MAKE_DECODER(, "aimer256f", aimer256f, oqsx, PrivateKeyInfo);
+MAKE_DECODER(, "aimer256f", aimer256f, oqsx, SubjectPublicKeyInfo);
+
+MAKE_DECODER(, "aimer256s", aimer256s, oqsx, PrivateKeyInfo);
+MAKE_DECODER(, "aimer256s", aimer256s, oqsx, SubjectPublicKeyInfo);
 ///// OQS_TEMPLATE_FRAGMENT_DECODER_MAKE_END

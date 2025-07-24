@@ -346,6 +346,75 @@ ENCODER_w_structure("p521_bikel5", p521_bikel5, pem, SubjectPublicKeyInfo),
 ENCODER_TEXT("p521_bikel5", p521_bikel5),
 #endif
 
+#ifdef OQS_ENABLE_KEM_smaug_1
+ENCODER_w_structure("smaug1", smaug1, der, PrivateKeyInfo),
+ENCODER_w_structure("smaug1", smaug1, pem, PrivateKeyInfo),
+ENCODER_w_structure("smaug1", smaug1, der, EncryptedPrivateKeyInfo),
+ENCODER_w_structure("smaug1", smaug1, pem, EncryptedPrivateKeyInfo),
+ENCODER_w_structure("smaug1", smaug1, der, SubjectPublicKeyInfo),
+ENCODER_w_structure("smaug1", smaug1, pem, SubjectPublicKeyInfo),
+ENCODER_TEXT("smaug1", smaug1),
+#endif
+
+#ifdef OQS_ENABLE_KEM_smaug_3
+ENCODER_w_structure("smaug3", smaug3, der, PrivateKeyInfo),
+ENCODER_w_structure("smaug3", smaug3, pem, PrivateKeyInfo),
+ENCODER_w_structure("smaug3", smaug3, der, EncryptedPrivateKeyInfo),
+ENCODER_w_structure("smaug3", smaug3, pem, EncryptedPrivateKeyInfo),
+ENCODER_w_structure("smaug3", smaug3, der, SubjectPublicKeyInfo),
+ENCODER_w_structure("smaug3", smaug3, pem, SubjectPublicKeyInfo),
+ENCODER_TEXT("smaug3", smaug3),
+#endif
+
+#ifdef OQS_ENABLE_KEM_smaug_5
+ENCODER_w_structure("smaug5", smaug5, der, PrivateKeyInfo),
+ENCODER_w_structure("smaug5", smaug5, pem, PrivateKeyInfo),
+ENCODER_w_structure("smaug5", smaug5, der, EncryptedPrivateKeyInfo),
+ENCODER_w_structure("smaug5", smaug5, pem, EncryptedPrivateKeyInfo),
+ENCODER_w_structure("smaug5", smaug5, der, SubjectPublicKeyInfo),
+ENCODER_w_structure("smaug5", smaug5, pem, SubjectPublicKeyInfo),
+ENCODER_TEXT("smaug5", smaug5),
+#endif
+
+#ifdef OQS_ENABLE_KEM_ntruplus_kem576
+ENCODER_w_structure("ntruplus_kem576", ntruplus_kem576, der, PrivateKeyInfo),
+ENCODER_w_structure("ntruplus_kem576", ntruplus_kem576, pem, PrivateKeyInfo),
+ENCODER_w_structure("ntruplus_kem576", ntruplus_kem576, der, EncryptedPrivateKeyInfo),
+ENCODER_w_structure("ntruplus_kem576", ntruplus_kem576, pem, EncryptedPrivateKeyInfo),
+ENCODER_w_structure("ntruplus_kem576", ntruplus_kem576, der, SubjectPublicKeyInfo),
+ENCODER_w_structure("ntruplus_kem576", ntruplus_kem576, pem, SubjectPublicKeyInfo),
+ENCODER_TEXT("ntruplus_kem576", ntruplus_kem576),
+#endif
+
+#ifdef OQS_ENABLE_KEM_ntruplus_kem768
+ENCODER_w_structure("ntruplus_kem768", ntruplus_kem768, der, PrivateKeyInfo),
+ENCODER_w_structure("ntruplus_kem768", ntruplus_kem768, pem, PrivateKeyInfo),
+ENCODER_w_structure("ntruplus_kem768", ntruplus_kem768, der, EncryptedPrivateKeyInfo),
+ENCODER_w_structure("ntruplus_kem768", ntruplus_kem768, pem, EncryptedPrivateKeyInfo),
+ENCODER_w_structure("ntruplus_kem768", ntruplus_kem768, der, SubjectPublicKeyInfo),
+ENCODER_w_structure("ntruplus_kem768", ntruplus_kem768, pem, SubjectPublicKeyInfo),
+ENCODER_TEXT("ntruplus_kem768", ntruplus_kem768),
+#endif
+
+#ifdef OQS_ENABLE_KEM_ntruplus_kem864
+ENCODER_w_structure("ntruplus_kem864", ntruplus_kem864, der, PrivateKeyInfo),
+ENCODER_w_structure("ntruplus_kem864", ntruplus_kem864, pem, PrivateKeyInfo),
+ENCODER_w_structure("ntruplus_kem864", ntruplus_kem864, der, EncryptedPrivateKeyInfo),
+ENCODER_w_structure("ntruplus_kem864", ntruplus_kem864, pem, EncryptedPrivateKeyInfo),
+ENCODER_w_structure("ntruplus_kem864", ntruplus_kem864, der, SubjectPublicKeyInfo),
+ENCODER_w_structure("ntruplus_kem864", ntruplus_kem864, pem, SubjectPublicKeyInfo),
+ENCODER_TEXT("ntruplus_kem864", ntruplus_kem864),
+#endif
+
+#ifdef OQS_ENABLE_KEM_ntruplus_kem1152
+ENCODER_w_structure("ntruplus_kem1152", ntruplus_kem1152, der, PrivateKeyInfo),
+ENCODER_w_structure("ntruplus_kem1152", ntruplus_kem1152, pem, PrivateKeyInfo),
+ENCODER_w_structure("ntruplus_kem1152", ntruplus_kem1152, der, EncryptedPrivateKeyInfo),
+ENCODER_w_structure("ntruplus_kem1152", ntruplus_kem1152, pem, EncryptedPrivateKeyInfo),
+ENCODER_w_structure("ntruplus_kem1152", ntruplus_kem1152, der, SubjectPublicKeyInfo),
+ENCODER_w_structure("ntruplus_kem1152", ntruplus_kem1152, pem, SubjectPublicKeyInfo),
+ENCODER_TEXT("ntruplus_kem1152", ntruplus_kem1152),
+#endif
 #endif /* OQS_KEM_ENCODERS */
 
 
@@ -813,5 +882,65 @@ ENCODER_w_structure("haetae5", haetae5, pem, EncryptedPrivateKeyInfo),
 ENCODER_w_structure("haetae5", haetae5, der, SubjectPublicKeyInfo),
 ENCODER_w_structure("haetae5", haetae5, pem, SubjectPublicKeyInfo),
 ENCODER_TEXT("haetae5", haetae5),
+#endif
+
+#ifdef OQS_ENABLE_SIG_aimer_128f
+ENCODER_w_structure("aimer128f", aimer128f, der, PrivateKeyInfo),
+ENCODER_w_structure("aimer128f", aimer128f, pem, PrivateKeyInfo),
+ENCODER_w_structure("aimer128f", aimer128f, der, EncryptedPrivateKeyInfo),
+ENCODER_w_structure("aimer128f", aimer128f, pem, EncryptedPrivateKeyInfo),
+ENCODER_w_structure("aimer128f", aimer128f, der, SubjectPublicKeyInfo),
+ENCODER_w_structure("aimer128f", aimer128f, pem, SubjectPublicKeyInfo),
+ENCODER_TEXT("aimer128f", aimer128f),
+#endif
+
+#ifdef OQS_ENABLE_SIG_aimer_128s
+ENCODER_w_structure("aimer128s", aimer128s, der, PrivateKeyInfo),
+ENCODER_w_structure("aimer128s", aimer128s, pem, PrivateKeyInfo),
+ENCODER_w_structure("aimer128s", aimer128s, der, EncryptedPrivateKeyInfo),
+ENCODER_w_structure("aimer128s", aimer128s, pem, EncryptedPrivateKeyInfo),
+ENCODER_w_structure("aimer128s", aimer128s, der, SubjectPublicKeyInfo),
+ENCODER_w_structure("aimer128s", aimer128s, pem, SubjectPublicKeyInfo),
+ENCODER_TEXT("aimer128s", aimer128s),
+#endif
+
+#ifdef OQS_ENABLE_SIG_aimer_192f
+ENCODER_w_structure("aimer192f", aimer192f, der, PrivateKeyInfo),
+ENCODER_w_structure("aimer192f", aimer192f, pem, PrivateKeyInfo),
+ENCODER_w_structure("aimer192f", aimer192f, der, EncryptedPrivateKeyInfo),
+ENCODER_w_structure("aimer192f", aimer192f, pem, EncryptedPrivateKeyInfo),
+ENCODER_w_structure("aimer192f", aimer192f, der, SubjectPublicKeyInfo),
+ENCODER_w_structure("aimer192f", aimer192f, pem, SubjectPublicKeyInfo),
+ENCODER_TEXT("aimer192f", aimer192f),
+#endif
+
+#ifdef OQS_ENABLE_SIG_aimer_192s
+ENCODER_w_structure("aimer192s", aimer192s, der, PrivateKeyInfo),
+ENCODER_w_structure("aimer192s", aimer192s, pem, PrivateKeyInfo),
+ENCODER_w_structure("aimer192s", aimer192s, der, EncryptedPrivateKeyInfo),
+ENCODER_w_structure("aimer192s", aimer192s, pem, EncryptedPrivateKeyInfo),
+ENCODER_w_structure("aimer192s", aimer192s, der, SubjectPublicKeyInfo),
+ENCODER_w_structure("aimer192s", aimer192s, pem, SubjectPublicKeyInfo),
+ENCODER_TEXT("aimer192s", aimer192s),
+#endif
+
+#ifdef OQS_ENABLE_SIG_aimer_256f
+ENCODER_w_structure("aimer256f", aimer256f, der, PrivateKeyInfo),
+ENCODER_w_structure("aimer256f", aimer256f, pem, PrivateKeyInfo),
+ENCODER_w_structure("aimer256f", aimer256f, der, EncryptedPrivateKeyInfo),
+ENCODER_w_structure("aimer256f", aimer256f, pem, EncryptedPrivateKeyInfo),
+ENCODER_w_structure("aimer256f", aimer256f, der, SubjectPublicKeyInfo),
+ENCODER_w_structure("aimer256f", aimer256f, pem, SubjectPublicKeyInfo),
+ENCODER_TEXT("aimer256f", aimer256f),
+#endif
+
+#ifdef OQS_ENABLE_SIG_aimer_256s
+ENCODER_w_structure("aimer256s", aimer256s, der, PrivateKeyInfo),
+ENCODER_w_structure("aimer256s", aimer256s, pem, PrivateKeyInfo),
+ENCODER_w_structure("aimer256s", aimer256s, der, EncryptedPrivateKeyInfo),
+ENCODER_w_structure("aimer256s", aimer256s, pem, EncryptedPrivateKeyInfo),
+ENCODER_w_structure("aimer256s", aimer256s, der, SubjectPublicKeyInfo),
+ENCODER_w_structure("aimer256s", aimer256s, pem, SubjectPublicKeyInfo),
+ENCODER_TEXT("aimer256s", aimer256s),
 #endif
 ///// OQS_TEMPLATE_FRAGMENT_MAKE_END

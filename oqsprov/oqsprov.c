@@ -132,6 +132,20 @@ const char *oqs_oid_alg_list[OQS_OID_CNT] = {
     "bikel5",
     NULL,
     "p521_bikel5",
+    NULL,
+    "smaug1",
+    NULL,
+    "smaug3",
+    NULL,
+    "smaug5",
+    NULL,
+    "ntruplus_kem576",
+    NULL,
+    "ntruplus_kem768",
+    NULL,
+    "ntruplus_kem864",
+    NULL,
+    "ntruplus_kem1152",
 
 #endif /* OQS_KEM_ENCODERS */
 
@@ -251,6 +265,18 @@ const char *oqs_oid_alg_list[OQS_OID_CNT] = {
     "haetae3",
     "1.3.9999.100.3",
     "haetae5",
+    "1.3.9999.100.4",
+    "aimer128f",
+    "1.3.9999.100.5",
+    "aimer128s",
+    "1.3.9999.100.6",
+    "aimer192f",
+    "1.3.9999.100.7",
+    "aimer192s",
+    "1.3.9999.100.8",
+    "aimer256f",
+    "1.3.9999.100.9",
+    "aimer256s",
     ///// OQS_TEMPLATE_FRAGMENT_ASSIGN_SIG_OIDS_END
 };
 
@@ -344,7 +370,23 @@ int oqs_patch_oids(void) {
         if ((envval = getenv("OQS_OID_P521_BIKEL5")))
             oqs_oid_alg_list[68] = envval;
 
-#define OQS_KEMOID_CNT 68 + 2
+        if ((envval = getenv("OQS_OID_SMAUG1")))
+            oqs_oid_alg_list[70] = envval;
+        if ((envval = getenv("OQS_OID_SMAUG3")))
+            oqs_oid_alg_list[72] = envval;
+        if ((envval = getenv("OQS_OID_SMAUG5")))
+            oqs_oid_alg_list[74] = envval;
+
+        if ((envval = getenv("OQS_OID_NTRUPLUS_KEM576")))
+            oqs_oid_alg_list[76] = envval;
+        if ((envval = getenv("OQS_OID_NTRUPLUS_KEM768")))
+            oqs_oid_alg_list[78] = envval;
+        if ((envval = getenv("OQS_OID_NTRUPLUS_KEM864")))
+            oqs_oid_alg_list[80] = envval;
+        if ((envval = getenv("OQS_OID_NTRUPLUS_KEM1152")))
+            oqs_oid_alg_list[82] = envval;
+
+#define OQS_KEMOID_CNT 82 + 2
 #else
 #define OQS_KEMOID_CNT 0
 #endif /* OQS_KEM_ENCODERS */
@@ -464,6 +506,19 @@ int oqs_patch_oids(void) {
             oqs_oid_alg_list[112 + OQS_KEMOID_CNT] = envval;
         if ((envval = getenv("OQS_OID_HAETAE5")))
             oqs_oid_alg_list[114 + OQS_KEMOID_CNT] = envval;
+
+        if ((envval = getenv("OQS_OID_AIMER128F")))
+            oqs_oid_alg_list[116 + OQS_KEMOID_CNT] = envval;
+        if ((envval = getenv("OQS_OID_AIMER128S")))
+            oqs_oid_alg_list[118 + OQS_KEMOID_CNT] = envval;
+        if ((envval = getenv("OQS_OID_AIMER192F")))
+            oqs_oid_alg_list[120 + OQS_KEMOID_CNT] = envval;
+        if ((envval = getenv("OQS_OID_AIMER192S")))
+            oqs_oid_alg_list[122 + OQS_KEMOID_CNT] = envval;
+        if ((envval = getenv("OQS_OID_AIMER256F")))
+            oqs_oid_alg_list[124 + OQS_KEMOID_CNT] = envval;
+        if ((envval = getenv("OQS_OID_AIMER256S")))
+            oqs_oid_alg_list[126 + OQS_KEMOID_CNT] = envval;
     } ///// OQS_TEMPLATE_FRAGMENT_OID_PATCHING_END
     return 1;
 }
@@ -623,6 +678,25 @@ static const OSSL_ALGORITHM oqsprovider_signatures[] = {
 #ifdef OQS_ENABLE_SIG_haetae_5
     SIGALG("haetae5", 256, oqs_signature_functions),
 #endif
+
+#ifdef OQS_ENABLE_SIG_aimer_128f
+    SIGALG("aimer128f", 128, oqs_signature_functions),
+#endif
+#ifdef OQS_ENABLE_SIG_aimer_128s
+    SIGALG("aimer128s", 128, oqs_signature_functions),
+#endif
+#ifdef OQS_ENABLE_SIG_aimer_192f
+    SIGALG("aimer192f", 192, oqs_signature_functions),
+#endif
+#ifdef OQS_ENABLE_SIG_aimer_192s
+    SIGALG("aimer192s", 192, oqs_signature_functions),
+#endif
+#ifdef OQS_ENABLE_SIG_aimer_256f
+    SIGALG("aimer256f", 256, oqs_signature_functions),
+#endif
+#ifdef OQS_ENABLE_SIG_aimer_256s
+    SIGALG("aimer256s", 256, oqs_signature_functions),
+#endif
     ///// OQS_TEMPLATE_FRAGMENT_SIG_FUNCTIONS_END
     {NULL, NULL, NULL}};
 
@@ -688,6 +762,30 @@ static const OSSL_ALGORITHM oqsprovider_asym_kems[] = {
 #ifdef OQS_ENABLE_KEM_bike_l5
     KEMBASEALG(bikel5, 256)
     KEMHYBALG(p521_bikel5, 256)
+#endif
+
+#ifdef OQS_ENABLE_KEM_smaug_1
+    KEMBASEALG(smaug1, 128)
+#endif
+#ifdef OQS_ENABLE_KEM_smaug_3
+    KEMBASEALG(smaug3, 192)
+#endif
+#ifdef OQS_ENABLE_KEM_smaug_5
+    KEMBASEALG(smaug5, 256)
+#endif
+
+#ifdef OQS_ENABLE_KEM_ntruplus_kem576
+    KEMBASEALG(ntruplus_kem576, 128)
+#endif
+
+#ifdef OQS_ENABLE_KEM_ntruplus_kem768
+    KEMBASEALG(ntruplus_kem768, 128)
+#endif
+#ifdef OQS_ENABLE_KEM_ntruplus_kem864
+    KEMBASEALG(ntruplus_kem864, 192)
+#endif
+#ifdef OQS_ENABLE_KEM_ntruplus_kem1152
+    KEMBASEALG(ntruplus_kem1152, 256)
 #endif
     // clang-format on
     ///// OQS_TEMPLATE_FRAGMENT_KEM_FUNCTIONS_END
@@ -817,6 +915,27 @@ static const OSSL_ALGORITHM oqsprovider_keymgmt[] = {
     SIGALG("haetae5", 256, oqs_haetae5_keymgmt_functions),
 #endif
 
+#ifdef OQS_ENABLE_SIG_aimer_128f
+    SIGALG("aimer128f", 128, oqs_aimer128f_keymgmt_functions),
+#endif
+#ifdef OQS_ENABLE_SIG_aimer_128s
+    SIGALG("aimer128s", 128, oqs_aimer128s_keymgmt_functions),
+#endif
+
+#ifdef OQS_ENABLE_SIG_aimer_192f
+    SIGALG("aimer192f", 192, oqs_aimer192f_keymgmt_functions),
+#endif
+#ifdef OQS_ENABLE_SIG_aimer_192s
+    SIGALG("aimer192s", 192, oqs_aimer192s_keymgmt_functions),
+#endif
+
+#ifdef OQS_ENABLE_SIG_aimer_256f
+    SIGALG("aimer256f", 256, oqs_aimer256f_keymgmt_functions),
+#endif
+#ifdef OQS_ENABLE_SIG_aimer_256s
+    SIGALG("aimer256s", 256, oqs_aimer256s_keymgmt_functions),
+#endif
+
 #ifdef OQS_ENABLE_KEM_frodokem_640_aes
     KEMKMALG(frodo640aes, 128)
 
@@ -887,6 +1006,31 @@ static const OSSL_ALGORITHM oqsprovider_keymgmt[] = {
     KEMKMALG(bikel5, 256)
 
     KEMKMHYBALG(p521_bikel5, 256, ecp)
+#endif
+
+#ifdef OQS_ENABLE_KEM_smaug_1
+    KEMKMALG(smaug1, 128)
+#endif
+
+#ifdef OQS_ENABLE_KEM_smaug_3
+    KEMKMALG(smaug3, 192)
+#endif
+
+#ifdef OQS_ENABLE_KEM_smaug_5
+    KEMKMALG(smaug5, 256)
+#endif
+
+#ifdef OQS_ENABLE_KEM_ntruplus_kem576
+    KEMKMALG(ntruplus_kem576, 128)
+#endif
+#ifdef OQS_ENABLE_KEM_ntruplus_kem768
+    KEMKMALG(ntruplus_kem768, 128)
+#endif
+#ifdef OQS_ENABLE_KEM_ntruplus_kem864
+    KEMKMALG(ntruplus_kem864, 192)
+#endif
+#ifdef OQS_ENABLE_KEM_ntruplus_kem1152
+    KEMKMALG(ntruplus_kem1152, 256)
 #endif
     // clang-format on
     ///// OQS_TEMPLATE_FRAGMENT_KEYMGMT_FUNCTIONS_END

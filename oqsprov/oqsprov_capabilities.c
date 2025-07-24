@@ -87,6 +87,19 @@ static OQS_GROUP_CONSTANTS oqs_group_list[] = {
     {65046, 256, TLS1_3_VERSION, 0, DTLS1_3_VERSION, 0, 1},
 
     {65047, 256, TLS1_3_VERSION, 0, DTLS1_3_VERSION, 0, 1},
+
+    //kpqc smaug
+    {65056, 128, TLS1_3_VERSION, 0, DTLS1_3_VERSION, 0, 1},
+    {65059, 192, TLS1_3_VERSION, 0, DTLS1_3_VERSION, 0, 1},
+    {65062, 256, TLS1_3_VERSION, 0, DTLS1_3_VERSION, 0, 1},
+
+    //kpqc ntruplus
+    {65064, 128, TLS1_3_VERSION, 0, DTLS1_3_VERSION, 0, 1},
+    {65067, 128, TLS1_3_VERSION, 0, DTLS1_3_VERSION, 0, 1},
+    {65070, 192, TLS1_3_VERSION, 0, DTLS1_3_VERSION, 0, 1},
+    {65073, 256, TLS1_3_VERSION, 0, DTLS1_3_VERSION, 0, 1},
+
+
     ///// OQS_TEMPLATE_FRAGMENT_GROUP_ASSIGNMENTS_END
 };
 
@@ -199,6 +212,28 @@ static const OSSL_PARAM oqs_param_group_list[][11] = {
 
     OQS_GROUP_ENTRY(p521_bikel5, p521_bikel5, p521_bikel5, 34),
 #endif
+#ifdef OQS_ENABLE_KEM_smaug_1
+    OQS_GROUP_ENTRY(smaug1, smaug1, smaug1, 35),
+#endif
+#ifdef OQS_ENABLE_KEM_smaug_3
+    OQS_GROUP_ENTRY(smaug3, smaug3, smaug3, 36),
+#endif
+#ifdef OQS_ENABLE_KEM_smaug_5
+    OQS_GROUP_ENTRY(smaug5, smaug5, smaug5, 37),
+#endif
+
+#ifdef OQS_ENABLE_KEM_ntruplus_kem576
+    OQS_GROUP_ENTRY(ntruplus_kem576, ntruplus_kem576, ntruplus_kem576, 38),
+#endif
+#ifdef OQS_ENABLE_KEM_ntruplus_kem768
+    OQS_GROUP_ENTRY(ntruplus_kem768, ntruplus_kem768, ntruplus_kem768, 39),
+#endif
+#ifdef OQS_ENABLE_KEM_ntruplus_kem864
+    OQS_GROUP_ENTRY(ntruplus_kem864, ntruplus_kem864, ntruplus_kem864, 40),
+#endif
+#ifdef OQS_ENABLE_KEM_ntruplus_kem1152
+    OQS_GROUP_ENTRY(ntruplus_kem1152, ntruplus_kem1152, ntruplus_kem1152, 41),
+#endif
     ///// OQS_TEMPLATE_FRAGMENT_GROUP_NAMES_END
 };
 
@@ -241,6 +276,10 @@ static OQS_SIGALG_CONSTANTS oqs_sigalg_list[] = {
     {0xff4d, 192, TLS1_3_VERSION, 0}, {0xff51, 256, TLS1_3_VERSION, 0},
     {0xff52, 256, TLS1_3_VERSION, 0}, {0xff3a, 128, TLS1_3_VERSION, 0},
     {0xff3c, 192, TLS1_3_VERSION, 0}, {0xff3e, 256, TLS1_3_VERSION, 0},
+    {0xff40, 128, TLS1_3_VERSION, 0}, {0xff42, 128, TLS1_3_VERSION, 0},
+    {0xff44, 192, TLS1_3_VERSION, 0}, {0xff46, 192, TLS1_3_VERSION, 0},
+    {0xff48, 256, TLS1_3_VERSION, 0}, {0xff4a, 256, TLS1_3_VERSION, 0},
+
     ///// OQS_TEMPLATE_FRAGMENT_SIGALG_ASSIGNMENTS_END
 };
 
@@ -339,6 +378,20 @@ int oqs_patch_codepoints() {
         oqs_group_list[33].group_id = atoi(getenv("OQS_CODEPOINT_BIKEL5"));
     if (getenv("OQS_CODEPOINT_P521_BIKEL5"))
         oqs_group_list[34].group_id = atoi(getenv("OQS_CODEPOINT_P521_BIKEL5"));
+    if (getenv("OQS_CODEPOINT_SMAUG1"))
+        oqs_group_list[35].group_id = atoi(getenv("OQS_CODEPOINT_SMAUG1"));
+    if (getenv("OQS_CODEPOINT_SMAUG3"))
+        oqs_group_list[36].group_id = atoi(getenv("OQS_CODEPOINT_SMAUG3"));
+    if (getenv("OQS_CODEPOINT_SMAUG5"))
+        oqs_group_list[37].group_id = atoi(getenv("OQS_CODEPOINT_SMAUG5"));
+    if (getenv("OQS_CODEPOINT_NTRUPLUS_KEM576"))
+        oqs_group_list[38].group_id = atoi(getenv("OQS_CODEPOINT_NTRUPLUS_KEM576"));
+    if (getenv("OQS_CODEPOINT_NTRUPLUS_KEM768"))
+        oqs_group_list[39].group_id = atoi(getenv("OQS_CODEPOINT_NTRUPLUS_KEM768"));
+    if (getenv("OQS_CODEPOINT_NTRUPLUS_KEM864"))
+        oqs_group_list[40].group_id = atoi(getenv("OQS_CODEPOINT_NTRUPLUS_KEM864"));
+    if (getenv("OQS_CODEPOINT_NTRUPLUS_KEM1152"))
+        oqs_group_list[41].group_id = atoi(getenv("OQS_CODEPOINT_NTRUPLUS_KEM1152"));
 
     if (getenv("OQS_CODEPOINT_MLDSA44"))
         oqs_sigalg_list[0].code_point = atoi(getenv("OQS_CODEPOINT_MLDSA44"));
@@ -503,6 +556,19 @@ int oqs_patch_codepoints() {
         oqs_sigalg_list[56].code_point = atoi(getenv("OQS_CODEPOINT_HAETAE3"));
     if (getenv("OQS_CODEPOINT_HAETAE5"))
         oqs_sigalg_list[57].code_point = atoi(getenv("OQS_CODEPOINT_HAETAE5"));
+
+    if (getenv("OQS_CODEPOINT_AIMER128F"))
+        oqs_sigalg_list[58].code_point = atoi(getenv("OQS_CODEPOINT_AIMER128F"));
+    if (getenv("OQS_CODEPOINT_AIMER128S"))
+        oqs_sigalg_list[59].code_point = atoi(getenv("OQS_CODEPOINT_AIMER128S"));
+    if (getenv("OQS_CODEPOINT_AIMER192F"))
+        oqs_sigalg_list[60].code_point = atoi(getenv("OQS_CODEPOINT_AIMER192F"));
+    if (getenv("OQS_CODEPOINT_AIMER192S"))
+        oqs_sigalg_list[61].code_point = atoi(getenv("OQS_CODEPOINT_AIMER192S"));
+    if (getenv("OQS_CODEPOINT_AIMER256F"))
+        oqs_sigalg_list[62].code_point = atoi(getenv("OQS_CODEPOINT_AIMER256F"));
+    if (getenv("OQS_CODEPOINT_AIMER256S"))
+        oqs_sigalg_list[63].code_point = atoi(getenv("OQS_CODEPOINT_AIMER256S"));
     ///// OQS_TEMPLATE_FRAGMENT_CODEPOINT_PATCHING_END
     return 1;
 }
@@ -689,6 +755,25 @@ static const OSSL_PARAM oqs_param_sigalg_list[][12] = {
 
 #ifdef OQS_ENABLE_SIG_haetae_5
     OQS_SIGALG_ENTRY(haetae5, haetae5, haetae5, "1.3.9999.100.3", 53),
+#endif
+
+#ifdef OQS_ENABLE_SIG_aimer_128f
+    OQS_SIGALG_ENTRY(aimer128f, aimer128f, aimer128f, "1.3.9999.100.4", 54),
+#endif
+#ifdef OQS_ENABLE_SIG_aimer_128s
+    OQS_SIGALG_ENTRY(aimer128s, aimer128s, aimer128s, "1.3.9999.100.5", 55),
+#endif
+#ifdef OQS_ENABLE_SIG_aimer_192f
+    OQS_SIGALG_ENTRY(aimer192f, aimer192f, aimer192f, "1.3.9999.100.6", 56),
+#endif
+#ifdef OQS_ENABLE_SIG_aimer_192s
+    OQS_SIGALG_ENTRY(aimer192s, aimer192s, aimer192s, "1.3.9999.100.7", 57),
+#endif
+#ifdef OQS_ENABLE_SIG_aimer_256f
+    OQS_SIGALG_ENTRY(aimer256f, aimer256f, aimer256f, "1.3.9999.100.8", 58),
+#endif
+#ifdef OQS_ENABLE_SIG_aimer_256s
+    OQS_SIGALG_ENTRY(aimer256s, aimer256s, aimer256s, "1.3.9999.100.9", 59),
 #endif
     ///// OQS_TEMPLATE_FRAGMENT_SIGALG_NAMES_END
 };

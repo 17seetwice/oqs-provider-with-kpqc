@@ -111,6 +111,13 @@ static oqs_nid_name_t nid_names[NID_TABLE_LEN] = {
     {0, "x448_bikel3", OQS_KEM_alg_bike_l3, KEY_TYPE_ECX_HYB_KEM, 192, 0},
     {0, "bikel5", OQS_KEM_alg_bike_l5, KEY_TYPE_KEM, 256, 0},
     {0, "p521_bikel5", OQS_KEM_alg_bike_l5, KEY_TYPE_ECP_HYB_KEM, 256, 0},
+    {0, "smaug1", OQS_KEM_alg_smaug_1, KEY_TYPE_KEM, 128, 0},
+    {0, "smaug3", OQS_KEM_alg_smaug_3, KEY_TYPE_KEM, 192, 0},
+    {0, "smaug5", OQS_KEM_alg_smaug_5, KEY_TYPE_KEM, 256, 0},
+    {0, "ntruplus_kem576", OQS_KEM_alg_ntruplus_kem576, KEY_TYPE_KEM, 128, 0},
+    {0, "ntruplus_kem768", OQS_KEM_alg_ntruplus_kem768, KEY_TYPE_KEM, 128, 0},
+    {0, "ntruplus_kem864", OQS_KEM_alg_ntruplus_kem864, KEY_TYPE_KEM, 192, 0},
+    {0, "ntruplus_kem1152", OQS_KEM_alg_ntruplus_kem1152, KEY_TYPE_KEM, 256, 0},
 
 #endif /* OQS_KEM_ENCODERS */
     {0, "mldsa44", OQS_SIG_alg_ml_dsa_44, KEY_TYPE_SIG, 128},
@@ -195,6 +202,12 @@ static oqs_nid_name_t nid_names[NID_TABLE_LEN] = {
     {0, "haetae3", OQS_SIG_alg_haetae_3, KEY_TYPE_SIG, 192},
     {0, "haetae5", OQS_SIG_alg_haetae_5, KEY_TYPE_SIG, 256},
 
+    {0, "aimer128f", OQS_SIG_alg_aimer_128f, KEY_TYPE_SIG, 128},
+    {0, "aimer128s", OQS_SIG_alg_aimer_128s, KEY_TYPE_SIG, 128},
+    {0, "aimer192f", OQS_SIG_alg_aimer_192f, KEY_TYPE_SIG, 192},
+    {0, "aimer192s", OQS_SIG_alg_aimer_192s, KEY_TYPE_SIG, 192},    
+    {0, "aimer256f", OQS_SIG_alg_aimer_256f, KEY_TYPE_SIG, 256},
+    {0, "aimer256s", OQS_SIG_alg_aimer_256s, KEY_TYPE_SIG, 256},  
     ///// OQS_TEMPLATE_FRAGMENT_OQSNAMES_END
 };
 

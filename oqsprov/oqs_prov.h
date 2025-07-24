@@ -1932,6 +1932,19 @@ extern const OSSL_DISPATCH oqs_p384_snova2455_keymgmt_functions[];
 extern const OSSL_DISPATCH oqs_snova2965_keymgmt_functions[];
 extern const OSSL_DISPATCH oqs_p521_snova2965_keymgmt_functions[];
 
+extern const OSSL_DISPATCH oqs_haetae2_keymgmt_functions[];
+extern const OSSL_DISPATCH oqs_haetae3_keymgmt_functions[];
+extern const OSSL_DISPATCH oqs_haetae5_keymgmt_functions[];
+
+extern const OSSL_DISPATCH oqs_aimer128f_keymgmt_functions[];
+extern const OSSL_DISPATCH oqs_aimer128s_keymgmt_functions[];
+extern const OSSL_DISPATCH oqs_aimer192f_keymgmt_functions[];
+extern const OSSL_DISPATCH oqs_aimer192s_keymgmt_functions[];
+extern const OSSL_DISPATCH oqs_aimer256f_keymgmt_functions[];
+extern const OSSL_DISPATCH oqs_aimer256s_keymgmt_functions[];
+
+
+
 extern const OSSL_DISPATCH oqs_frodo640aes_keymgmt_functions[];
 
 extern const OSSL_DISPATCH oqs_ecp_p256_frodo640aes_keymgmt_functions[];
@@ -1980,10 +1993,14 @@ extern const OSSL_DISPATCH oqs_bikel5_keymgmt_functions[];
 
 extern const OSSL_DISPATCH oqs_ecp_p521_bikel5_keymgmt_functions[];
 
+extern const OSSL_DISPATCH oqs_smaug1_keymgmt_functions[];
+extern const OSSL_DISPATCH oqs_smaug3_keymgmt_functions[];
+extern const OSSL_DISPATCH oqs_smaug5_keymgmt_functions[];
 
-extern const OSSL_DISPATCH oqs_haetae2_keymgmt_functions[];
-extern const OSSL_DISPATCH oqs_haetae3_keymgmt_functions[];
-extern const OSSL_DISPATCH oqs_haetae5_keymgmt_functions[];
+extern const OSSL_DISPATCH oqs_ntruplus_kem576_keymgmt_functions[];
+extern const OSSL_DISPATCH oqs_ntruplus_kem768_keymgmt_functions[];
+extern const OSSL_DISPATCH oqs_ntruplus_kem864_keymgmt_functions[];
+extern const OSSL_DISPATCH oqs_ntruplus_kem1152_keymgmt_functions[];
 
 
 ///// OQS_TEMPLATE_FRAGMENT_ALG_FUNCTIONS_END

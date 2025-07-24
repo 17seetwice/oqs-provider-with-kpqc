@@ -116,6 +116,42 @@ DECODER_w_structure("p521_bikel5", der, PrivateKeyInfo, p521_bikel5),
 DECODER_w_structure("p521_bikel5", der, SubjectPublicKeyInfo, p521_bikel5),
 #endif
 
+#ifdef OQS_ENABLE_KEM_smaug_1
+DECODER_w_structure("smaug1", der, PrivateKeyInfo, smaug1),
+DECODER_w_structure("smaug1", der, SubjectPublicKeyInfo, smaug1),
+#endif
+
+#ifdef OQS_ENABLE_KEM_smaug_3
+DECODER_w_structure("smaug3", der, PrivateKeyInfo, smaug3),
+DECODER_w_structure("smaug3", der, SubjectPublicKeyInfo, smaug3),
+#endif
+
+#ifdef OQS_ENABLE_KEM_smaug_5
+DECODER_w_structure("smaug5", der, PrivateKeyInfo, smaug5),
+DECODER_w_structure("smaug5", der, SubjectPublicKeyInfo, smaug5),
+#endif
+
+#ifdef OQS_ENABLE_KEM_ntruplus_kem576
+DECODER_w_structure("ntruplus_kem576", der, PrivateKeyInfo, ntruplus_kem576),
+DECODER_w_structure("ntruplus_kem576", der, SubjectPublicKeyInfo, ntruplus_kem576),
+#endif
+
+#ifdef OQS_ENABLE_KEM_ntruplus_kem768
+DECODER_w_structure("ntruplus_kem768", der, PrivateKeyInfo, ntruplus_kem768),
+DECODER_w_structure("ntruplus_kem768", der, SubjectPublicKeyInfo, ntruplus_kem768),
+#endif
+
+#ifdef OQS_ENABLE_KEM_ntruplus_kem864
+DECODER_w_structure("ntruplus_kem864", der, PrivateKeyInfo, ntruplus_kem864),
+DECODER_w_structure("ntruplus_kem864", der, SubjectPublicKeyInfo, ntruplus_kem864),
+#endif
+
+
+#ifdef OQS_ENABLE_KEM_ntruplus_kem1152
+DECODER_w_structure("ntruplus_kem1152", der, PrivateKeyInfo, ntruplus_kem1152),
+DECODER_w_structure("ntruplus_kem1152", der, SubjectPublicKeyInfo, ntruplus_kem1152),
+#endif
+
 #endif /* OQS_KEM_ENCODERS */
 
 
@@ -264,5 +300,35 @@ DECODER_w_structure("haetae3", der, SubjectPublicKeyInfo, haetae3),
 #ifdef OQS_ENABLE_SIG_haetae_5
 DECODER_w_structure("haetae5", der, PrivateKeyInfo, haetae5),
 DECODER_w_structure("haetae5", der, SubjectPublicKeyInfo, haetae5),
+#endif
+
+#ifdef OQS_ENABLE_SIG_aimer_128f
+DECODER_w_structure("aimer128f", der, PrivateKeyInfo, aimer128f),
+DECODER_w_structure("aimer128f", der, SubjectPublicKeyInfo, aimer128f),
+#endif
+
+#ifdef OQS_ENABLE_SIG_aimer_128s
+DECODER_w_structure("aimer128s", der, PrivateKeyInfo, aimer128s),
+DECODER_w_structure("aimer128s", der, SubjectPublicKeyInfo, aimer128s),
+#endif
+
+#ifdef OQS_ENABLE_SIG_aimer_192f
+DECODER_w_structure("aimer192f", der, PrivateKeyInfo, aimer192f),
+DECODER_w_structure("aimer192f", der, SubjectPublicKeyInfo, aimer192f),
+#endif
+
+#ifdef OQS_ENABLE_SIG_aimer_192s
+DECODER_w_structure("aimer192s", der, PrivateKeyInfo, aimer192s),
+DECODER_w_structure("aimer192s", der, SubjectPublicKeyInfo, aimer192s),
+#endif
+
+#ifdef OQS_ENABLE_SIG_aimer_256f
+DECODER_w_structure("aimer256f", der, PrivateKeyInfo, aimer256f),
+DECODER_w_structure("aimer256f", der, SubjectPublicKeyInfo, aimer256f),
+#endif
+
+#ifdef OQS_ENABLE_SIG_aimer_256s
+DECODER_w_structure("aimer256s", der, PrivateKeyInfo, aimer256s),
+DECODER_w_structure("aimer256s", der, SubjectPublicKeyInfo, aimer256s),
 #endif
 ///// OQS_TEMPLATE_FRAGMENT_MAKE_END

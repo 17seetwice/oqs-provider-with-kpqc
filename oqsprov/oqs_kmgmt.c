@@ -1275,6 +1275,66 @@ static void *haetae5_gen_init(void *provctx, int selection) {
                          0, 256, 57, 0);
 }
 
+static void *aimer128f_new_key(void *provctx) {
+    return oqsx_key_new(PROV_OQS_LIBCTX_OF(provctx), OQS_SIG_alg_aimer_128f,
+                        "aimer128f", KEY_TYPE_SIG, NULL, 128, 58, 0);
+}
+
+static void *aimer128f_gen_init(void *provctx, int selection) {
+    return oqsx_gen_init(provctx, selection, OQS_SIG_alg_aimer_128f, "aimer128f",
+                         0, 128, 58, 0);
+}
+
+static void *aimer128s_new_key(void *provctx) {
+    return oqsx_key_new(PROV_OQS_LIBCTX_OF(provctx), OQS_SIG_alg_aimer_128s,
+                        "aimer128s", KEY_TYPE_SIG, NULL, 128, 59, 0);
+}
+
+static void *aimer128s_gen_init(void *provctx, int selection) {
+    return oqsx_gen_init(provctx, selection, OQS_SIG_alg_aimer_128s, "aimer128s",
+                         0, 128, 59, 0);
+}
+
+static void *aimer192f_new_key(void *provctx) {
+    return oqsx_key_new(PROV_OQS_LIBCTX_OF(provctx), OQS_SIG_alg_aimer_192f,
+                        "aimer192f", KEY_TYPE_SIG, NULL, 192, 60, 0);
+}
+
+static void *aimer192f_gen_init(void *provctx, int selection) {
+    return oqsx_gen_init(provctx, selection, OQS_SIG_alg_aimer_192f, "aimer192f",
+                         0, 192, 60, 0);
+}
+
+static void *aimer192s_new_key(void *provctx) {
+    return oqsx_key_new(PROV_OQS_LIBCTX_OF(provctx), OQS_SIG_alg_aimer_192s,
+                        "aimer192s", KEY_TYPE_SIG, NULL, 192, 61, 0);
+}
+
+static void *aimer192s_gen_init(void *provctx, int selection) {
+    return oqsx_gen_init(provctx, selection, OQS_SIG_alg_aimer_192s, "aimer192s",
+                         0, 192, 61, 0);
+}
+
+static void *aimer256f_new_key(void *provctx) {
+    return oqsx_key_new(PROV_OQS_LIBCTX_OF(provctx), OQS_SIG_alg_aimer_256f,
+                        "aimer256f", KEY_TYPE_SIG, NULL, 256, 62, 0);
+}
+
+static void *aimer256f_gen_init(void *provctx, int selection) {
+    return oqsx_gen_init(provctx, selection, OQS_SIG_alg_aimer_256f, "aimer256f",
+                         0, 256, 62, 0);
+}
+
+static void *aimer256s_new_key(void *provctx) {
+    return oqsx_key_new(PROV_OQS_LIBCTX_OF(provctx), OQS_SIG_alg_aimer_256s,
+                        "aimer256s", KEY_TYPE_SIG, NULL, 256, 63, 0);
+}
+
+static void *aimer256s_gen_init(void *provctx, int selection) {
+    return oqsx_gen_init(provctx, selection, OQS_SIG_alg_aimer_256s, "aimer256s",
+                         0, 256, 63, 0);
+}
+
 ///// OQS_TEMPLATE_FRAGMENT_KEYMGMT_CONSTRUCTORS_END
 
 #define MAKE_SIG_KEYMGMT_FUNCTIONS(alg)                                        \
@@ -1477,7 +1537,12 @@ MAKE_SIG_KEYMGMT_FUNCTIONS(p521_snova2965)
 MAKE_SIG_KEYMGMT_FUNCTIONS(haetae2)
 MAKE_SIG_KEYMGMT_FUNCTIONS(haetae3)
 MAKE_SIG_KEYMGMT_FUNCTIONS(haetae5)
-
+MAKE_SIG_KEYMGMT_FUNCTIONS(aimer128f)
+MAKE_SIG_KEYMGMT_FUNCTIONS(aimer128s)
+MAKE_SIG_KEYMGMT_FUNCTIONS(aimer192f)
+MAKE_SIG_KEYMGMT_FUNCTIONS(aimer192s)
+MAKE_SIG_KEYMGMT_FUNCTIONS(aimer256f)
+MAKE_SIG_KEYMGMT_FUNCTIONS(aimer256s)
 
 
 MAKE_KEM_KEYMGMT_FUNCTIONS(frodo640aes, OQS_KEM_alg_frodokem_640_aes, 128)
@@ -1546,4 +1611,11 @@ MAKE_KEM_ECX_KEYMGMT_FUNCTIONS(x448_bikel3, OQS_KEM_alg_bike_l3, 192, 0)
 MAKE_KEM_KEYMGMT_FUNCTIONS(bikel5, OQS_KEM_alg_bike_l5, 256)
 
 MAKE_KEM_ECP_KEYMGMT_FUNCTIONS(p521_bikel5, OQS_KEM_alg_bike_l5, 256)
+
+MAKE_KEM_KEYMGMT_FUNCTIONS(ntruplus_kem576, OQS_KEM_alg_ntruplus_kem576, 128)
+MAKE_KEM_KEYMGMT_FUNCTIONS(ntruplus_kem768, OQS_KEM_alg_ntruplus_kem768, 128)
+MAKE_KEM_KEYMGMT_FUNCTIONS(ntruplus_kem864, OQS_KEM_alg_ntruplus_kem864, 192)
+MAKE_KEM_KEYMGMT_FUNCTIONS(ntruplus_kem1152, OQS_KEM_alg_ntruplus_kem1152, 256)
+
+
 ///// OQS_TEMPLATE_FRAGMENT_KEYMGMT_FUNCTIONS_END
