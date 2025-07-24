@@ -3,7 +3,8 @@
 [![GitHub actions](https://github.com/open-quantum-safe/oqs-provider/actions/workflows/macos.yml/badge.svg)](https://github.com/open-quantum-safe/oqs-provider/actions/workflows/macos.yml)
 [![oqs-provider](https://circleci.com/gh/open-quantum-safe/oqs-provider.svg?style=svg)](https://app.circleci.com/pipelines/github/open-quantum-safe/oqs-provider)
 
-oqsprovider - Open Quantum Safe provider for OpenSSL (3.x)
+oqsprovider - Open Quantum Safe provider for OpenSSL (3.x) - with KpqC
+AIMER,HAETAE, SMAUG, NTRUPLUS ADDED!
 ==========================================================
 
 Purpose
