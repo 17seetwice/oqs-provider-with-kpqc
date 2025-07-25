@@ -2280,4 +2280,20 @@ MAKE_ENCODER(, aimer192s, oqsx, SubjectPublicKeyInfo, der);
 MAKE_ENCODER(, aimer192s, oqsx, SubjectPublicKeyInfo, pem);
 MAKE_TEXT_ENCODER(, aimer192s);
 
+MAKE_ENCODER(, aimer256f, oqsx, EncryptedPrivateKeyInfo, der);
+MAKE_ENCODER(, aimer256f, oqsx, EncryptedPrivateKeyInfo, pem);
+MAKE_ENCODER(, aimer256f, oqsx, PrivateKeyInfo, der);
+MAKE_ENCODER(, aimer256f, oqsx, PrivateKeyInfo, pem);
+MAKE_ENCODER(, aimer256f, oqsx, SubjectPublicKeyInfo, der);
+MAKE_ENCODER(, aimer256f, oqsx, SubjectPublicKeyInfo, pem);
+MAKE_TEXT_ENCODER(, aimer256f);
+
+MAKE_ENCODER(, aimer256s, oqsx, EncryptedPrivateKeyInfo, der);
+MAKE_ENCODER(, aimer256s, oqsx, EncryptedPrivateKeyInfo, pem);
+MAKE_ENCODER(, aimer256s, oqsx, PrivateKeyInfo, der);
+MAKE_ENCODER(, aimer256s, oqsx, PrivateKeyInfo, pem);
+MAKE_ENCODER(, aimer256s, oqsx, SubjectPublicKeyInfo, der);
+MAKE_ENCODER(, aimer256s, oqsx, SubjectPublicKeyInfo, pem);
+MAKE_TEXT_ENCODER(, aimer256s);
+
 ///// OQS_TEMPLATE_FRAGMENT_ENCODER_MAKE_END
