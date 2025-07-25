@@ -53,11 +53,11 @@ extern OSSL_FUNC_provider_get_capabilities_fn oqs_provider_get_capabilities;
  * List of all algorithms with given OIDs
  */
 ///// OQS_TEMPLATE_FRAGMENT_ASSIGN_SIG_OIDS_START
-
+//194: kem 128: SIG
 #ifdef OQS_KEM_ENCODERS
-#define OQS_OID_CNT 180
+#define OQS_OID_CNT 194
 #else
-#define OQS_OID_CNT 110+6
+#define OQS_OID_CNT 128
 #endif
 const char *oqs_oid_alg_list[OQS_OID_CNT] = {
 
