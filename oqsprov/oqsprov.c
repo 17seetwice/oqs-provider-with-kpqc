@@ -138,13 +138,13 @@ const char *oqs_oid_alg_list[OQS_OID_CNT] = {
     "smaug3",
     NULL,
     "smaug5",
-    NULL,
+    "1.23.6.1.4.1.422.1",
     "ntruplus_kem576",
-    NULL,
+    "1.23.6.1.4.1.422.2",
     "ntruplus_kem768",
-    NULL,
+    "1.23.6.1.4.1.422.3",
     "ntruplus_kem864",
-    NULL,
+    "1.23.6.1.4.1.422.4",
     "ntruplus_kem1152",
 
 #endif /* OQS_KEM_ENCODERS */
