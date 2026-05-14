@@ -4,8 +4,12 @@
 [![oqs-provider](https://circleci.com/gh/open-quantum-safe/oqs-provider.svg?style=svg)](https://app.circleci.com/pipelines/github/open-quantum-safe/oqs-provider)
 
 oqsprovider - Open Quantum Safe provider for OpenSSL (3.x) - with KpqC
-AIMER,HAETAE, SMAUG, NTRUPLUS ADDED!
 ==========================================================
+
+KpqC AIMER,HAETAE, SMAUG, NTRUPLUS added
+you can easily use KpqC at openssl.
+before use oqs-provider-with-KpqC, here https://github.com/17seetwice/liboqs-with-KpqC to use openssl based on KpqC.
+liboqs
 
 Purpose
 -------
