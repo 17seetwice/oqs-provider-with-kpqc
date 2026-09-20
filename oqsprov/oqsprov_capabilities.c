@@ -274,11 +274,11 @@ static OQS_SIGALG_CONSTANTS oqs_sigalg_list[] = {
     {0xff3f, 128, TLS1_3_VERSION, 0}, {0xff42, 128, TLS1_3_VERSION, 0},
     {0xff43, 128, TLS1_3_VERSION, 0}, {0xff4c, 192, TLS1_3_VERSION, 0},
     {0xff4d, 192, TLS1_3_VERSION, 0}, {0xff51, 256, TLS1_3_VERSION, 0},
-    {0xff52, 256, TLS1_3_VERSION, 0}, {0xff3a, 128, TLS1_3_VERSION, 0},
-    {0xff3c, 192, TLS1_3_VERSION, 0}, {0xff3e, 256, TLS1_3_VERSION, 0},
-    {0xff40, 128, TLS1_3_VERSION, 0}, {0xff42, 128, TLS1_3_VERSION, 0},
-    {0xff44, 192, TLS1_3_VERSION, 0}, {0xff46, 192, TLS1_3_VERSION, 0},
-    {0xff48, 256, TLS1_3_VERSION, 0}, {0xff4a, 256, TLS1_3_VERSION, 0},
+    {0xff52, 256, TLS1_3_VERSION, 0}, {0xff80, 128, TLS1_3_VERSION, 0},
+    {0xff81, 192, TLS1_3_VERSION, 0}, {0xff82, 256, TLS1_3_VERSION, 0},
+    {0xff83, 128, TLS1_3_VERSION, 0}, {0xff84, 128, TLS1_3_VERSION, 0},
+    {0xff85, 192, TLS1_3_VERSION, 0}, {0xff86, 192, TLS1_3_VERSION, 0},
+    {0xff87, 256, TLS1_3_VERSION, 0}, {0xff88, 256, TLS1_3_VERSION, 0},
 
     ///// OQS_TEMPLATE_FRAGMENT_SIGALG_ASSIGNMENTS_END
 };
@@ -746,34 +746,34 @@ static const OSSL_PARAM oqs_param_sigalg_list[][12] = {
 #endif
 
 #ifdef OQS_ENABLE_SIG_haetae_2
-    OQS_SIGALG_ENTRY(haetae2, haetae2, haetae2, "1.3.9999.100.1", 51),
+    OQS_SIGALG_ENTRY(haetae2, haetae2, haetae2, "1.3.9999.100.1", 55),
 #endif
 
 #ifdef OQS_ENABLE_SIG_haetae_3
-    OQS_SIGALG_ENTRY(haetae3, haetae3, haetae3, "1.3.9999.100.2", 52),
+    OQS_SIGALG_ENTRY(haetae3, haetae3, haetae3, "1.3.9999.100.2", 56),
 #endif
 
 #ifdef OQS_ENABLE_SIG_haetae_5
-    OQS_SIGALG_ENTRY(haetae5, haetae5, haetae5, "1.3.9999.100.3", 53),
+    OQS_SIGALG_ENTRY(haetae5, haetae5, haetae5, "1.3.9999.100.3", 57),
 #endif
 
 #ifdef OQS_ENABLE_SIG_aimer_128f
-    OQS_SIGALG_ENTRY(aimer128f, aimer128f, aimer128f, "1.3.9999.100.4", 54),
+    OQS_SIGALG_ENTRY(aimer128f, aimer128f, aimer128f, "1.3.9999.100.4", 58),
 #endif
 #ifdef OQS_ENABLE_SIG_aimer_128s
-    OQS_SIGALG_ENTRY(aimer128s, aimer128s, aimer128s, "1.3.9999.100.5", 55),
+    OQS_SIGALG_ENTRY(aimer128s, aimer128s, aimer128s, "1.3.9999.100.5", 59),
 #endif
 #ifdef OQS_ENABLE_SIG_aimer_192f
-    OQS_SIGALG_ENTRY(aimer192f, aimer192f, aimer192f, "1.3.9999.100.6", 56),
+    OQS_SIGALG_ENTRY(aimer192f, aimer192f, aimer192f, "1.3.9999.100.6", 60),
 #endif
 #ifdef OQS_ENABLE_SIG_aimer_192s
-    OQS_SIGALG_ENTRY(aimer192s, aimer192s, aimer192s, "1.3.9999.100.7", 57),
+    OQS_SIGALG_ENTRY(aimer192s, aimer192s, aimer192s, "1.3.9999.100.7", 61),
 #endif
 #ifdef OQS_ENABLE_SIG_aimer_256f
-    OQS_SIGALG_ENTRY(aimer256f, aimer256f, aimer256f, "1.3.9999.100.8", 58),
+    OQS_SIGALG_ENTRY(aimer256f, aimer256f, aimer256f, "1.3.9999.100.8", 62),
 #endif
 #ifdef OQS_ENABLE_SIG_aimer_256s
-    OQS_SIGALG_ENTRY(aimer256s, aimer256s, aimer256s, "1.3.9999.100.9", 59),
+    OQS_SIGALG_ENTRY(aimer256s, aimer256s, aimer256s, "1.3.9999.100.9", 63),
 #endif
     ///// OQS_TEMPLATE_FRAGMENT_SIGALG_NAMES_END
 };
